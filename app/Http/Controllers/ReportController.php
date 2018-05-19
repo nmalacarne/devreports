@@ -10,11 +10,14 @@ class ReportController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return response('Not Implemented', 501);
+        return view('reports.index', [
+            'reports' => $request->user()->reports()->paginate(12),
+        ]);
     }
 
     /**

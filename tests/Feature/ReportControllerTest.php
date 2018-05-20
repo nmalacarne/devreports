@@ -119,4 +119,52 @@ class ReportControllerTest extends TestCase
             'progress',
         ]);
     }
+
+    /**
+     * @test
+     * @group feature
+     * @group reports
+     * @group controllers
+     * @return void
+     */
+    public function shouldUpdateReport()
+    {
+        $report = factory(Report::class)->create([
+            'user_id' => $this->user,
+        ]);
+
+        $response = $this->put(route('reports.update', $report), [
+            'progress' => 'Testing'
+        ]);
+
+        $this->assertEquals(1, Report::count());
+
+        $updated = Report::first();
+        $response->assertRedirect(route('reports.show', $updated));
+        $this->assertEquals($report->id, $updated->id);
+        $this->assertNotEquals($report->progress, $updated->progress);
+    }
+
+    /**
+     * @test
+     * @group feature
+     * @group reports
+     * @group controllers
+     * @return void
+     */
+    public function shouldValidateUpdateParams()
+    {
+        $report = factory(Report::class)->create([
+            'user_id' => $this->user,
+        ]);
+
+        $response = $this->put(route('reports.update', $report), [
+            'progress' => null,
+        ]);
+
+        $this->assertEquals($report->progress, Report::first()->progress);
+        $response->assertSessionHasErrors([
+            'progress',
+        ]);
+    }
 }

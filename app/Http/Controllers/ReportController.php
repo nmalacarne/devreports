@@ -74,13 +74,22 @@ class ReportController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Report  $report
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Report $report
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function update(Request $request, Report $report)
     {
-        return response('Not Implemented', 501);
+        $this->authorize('update', $report);
+
+        $request->validate([
+            'progress' => 'filled',
+        ]);
+
+        $report->fill($request->all())->save();
+
+        return response()->redirectToRoute('reports.show', $report);
     }
 
     /**

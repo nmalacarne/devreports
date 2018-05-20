@@ -85,4 +85,38 @@ class ReportControllerTest extends TestCase
 
         $response->assertStatus(403);
     }
+
+    /**
+     * @test
+     * @group feature
+     * @group reports
+     * @group controllers
+     * @return void
+     */
+    public function shouldStoreNewReport()
+    {
+        $response = $this->post(route('reports.store'), [
+            'progress' => 'Testing'
+        ]);
+
+        $response->assertRedirect(route('reports.show', Report::first()));
+        $this->assertEquals(1, Report::count());
+    }
+
+    /**
+     * @test
+     * @group feature
+     * @group reports
+     * @group controllers
+     * @return void
+     */
+    public function shouldValidateStoreParams()
+    {
+        $response = $this->post(route('reports.store'), []);
+
+        $this->assertEquals(0, Report::count());
+        $response->assertSessionHasErrors([
+            'progress',
+        ]);
+    }
 }

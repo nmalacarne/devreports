@@ -33,12 +33,20 @@ class ReportController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function store(Request $request)
     {
-        return response('Not Implemented', 501);
+        $this->authorize('create', Report::class);
+        $request->validate([
+            'progress' => 'required',
+        ]);
+
+        $report = $request->user()->reports()->create($request->all());
+
+        return response()->redirectToRoute('reports.show', $report);
     }
 
     /**

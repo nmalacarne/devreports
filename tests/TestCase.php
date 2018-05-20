@@ -14,7 +14,7 @@ abstract class TestCase extends BaseTestCase
      * @param null|String $key
      * @return mixed
      */
-    public function getResponseData(TestResponse $response, ?String $key)
+    public function getResponseData(TestResponse $response, ?String $key = null)
     {
         $data = $response->getOriginalContent()->getData();
 

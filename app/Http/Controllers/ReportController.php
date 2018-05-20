@@ -78,11 +78,14 @@ class ReportController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Report  $report
+     * @param  \App\Report $report
      * @return \Illuminate\Http\Response
+     * @throws \Exception
      */
     public function destroy(Report $report)
     {
-        return response('Not Implemented', 501);
+        $this->authorize('delete', $report);
+        $report->delete();
+        return response()->redirectToRoute('reports.index');
     }
 }

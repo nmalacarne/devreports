@@ -48,4 +48,41 @@ class ReportControllerTest extends TestCase
         $this->assertEquals(12, $data->count());
         $this->assertEquals(20, $data->total());
     }
+
+    /**
+     * @test
+     * @group feature
+     * @group reports
+     * @group controllers
+     * @return void
+     */
+    public function shouldDeleteReport()
+    {
+        $report = factory(Report::class)->create([
+            'user_id' => $this->user,
+        ]);
+
+        $response = $this->delete(route('reports.destroy', $report));
+
+        $response->assertRedirect(route('reports.index'));
+        $this->assertEquals(0, Report::count());
+    }
+
+    /**
+     * @test
+     * @group feature
+     * @group reports
+     * @group controllers
+     * @return void
+     */
+    public function shouldNotAllowDeletionOfAnotherUsersReport()
+    {
+        $report = factory(Report::class)->create([
+            'user_id' => factory(User::class)->create(),
+        ]);
+
+        $response = $this->delete(route('reports.destroy', $report));
+
+        $response->assertStatus(403);
+    }
 }

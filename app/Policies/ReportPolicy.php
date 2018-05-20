@@ -54,6 +54,8 @@ class ReportPolicy
      */
     public function delete(User $user, Report $report)
     {
-        return false;
+        // identical operator would be nice here, but
+        // for some reason user_id is a string ...
+        return $user->id == $report->user_id;
     }
 }

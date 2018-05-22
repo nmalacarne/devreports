@@ -27,7 +27,7 @@ class ReportController extends Controller
      */
     public function create()
     {
-        return response('Not Implemented', 501);
+        return view('reports.create');
     }
 
     /**
@@ -40,6 +40,7 @@ class ReportController extends Controller
     public function store(Request $request)
     {
         $this->authorize('create', Report::class);
+
         $request->validate([
             'progress' => 'required',
         ]);

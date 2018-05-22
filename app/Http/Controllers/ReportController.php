@@ -60,7 +60,9 @@ class ReportController extends Controller
      */
     public function show(Report $report)
     {
-        return response('Not Implemented', 501);
+	    return view('reports.show', [
+            'report' => $report,
+	    ]);
     }
 
     /**

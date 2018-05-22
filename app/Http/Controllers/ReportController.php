@@ -71,7 +71,9 @@ class ReportController extends Controller
      */
     public function edit(Report $report)
     {
-        return response('Not Implemented', 501);
+	    return view('reports.edit', [
+            'report' => $report,
+	    ]);
     }
 
     /**

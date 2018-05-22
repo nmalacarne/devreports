@@ -8350,3 +8350,7 @@ button.close {
   }
 }
 
+textarea {
+  max-width: 100%;
+}
+

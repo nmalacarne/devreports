@@ -18,7 +18,7 @@
 
         <div class="panel-footer text-center">
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-4">
                     <a href="{{ route('reports.edit', $report) }}">
                         <button type="button" class="btn btn-default btn-block">
                             <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
@@ -26,7 +26,15 @@
                     </a>
                 </div>
 
-                <div class="col-sm-6">
+                <div class="col-sm-4">
+                    <a href="{{ route('reports.show', $report) }}">
+                        <button type="button" class="btn btn-default btn-block">
+                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                        </button>
+                    </a>
+                </div>
+
+                <div class="col-sm-4">
                     <form action="{{ route('reports.destroy', $report) }}" method="POST">
                         {{ csrf_field() }}
                         <input type="hidden" name="_method" value="DELETE" />

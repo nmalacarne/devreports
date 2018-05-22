@@ -14,20 +14,8 @@
                    <form method="POST" action="{{ route('reports.store') }}">
                        {{ csrf_field() }}
 
-                       <div class="form-group {{ $errors->has('progress') ? 'has-error' : '' }}">
-                           <label for="progress" class="control-label">Progress</label>
-                           <textarea name="progress" class="form-control"></textarea>
-
-                           @if ($errors->has('progress'))
-                               <span class="help-block">{{ $errors->first('progress') }}</span>
-                           @endif
-                       </div>
-
-                       <a href="{{ url()->previous() }}">
-                           <button type="button" class="btn pull-left">Cancel</button>
-                       </a>
-
-                       <button type="submit" class="btn btn-primary pull-right">Save</button>
+                       @include('reports._fields')
+                       @include('reports._buttons')
                    </form>
                </div>
            </div>

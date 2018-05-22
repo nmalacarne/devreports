@@ -27,7 +27,9 @@ class ReportController extends Controller
      */
     public function create()
     {
-        return view('reports.create');
+        return view('reports.create', [
+            'report' => new Report(),
+        ]);
     }
 
     /**

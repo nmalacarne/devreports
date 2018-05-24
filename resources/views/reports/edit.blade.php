@@ -1,16 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="row">
-       <div class="col-lg-6 col-lg-offset-3">
-           <div class="panel panel-info">
-               <div class="panel-heading">
-                   <div class="panel-title">
-                       Edit Report
-                   </div>
+    <div class="row justify-content-center">
+       <div class="col-lg-6">
+           <div class="card">
+               <div class="card-header">
+                   Edit Report
                </div>
 
-               <div class="panel-body">
+               <div class="card-body">
                    <form method="POST" action="{{ route('reports.update', $report) }}">
                        {{ csrf_field() }}
                        {{ method_field('PUT') }}

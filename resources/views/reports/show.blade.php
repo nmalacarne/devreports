@@ -11,7 +11,10 @@
                </div>
 
                <div class="panel-body">
-                   @include('reports._fields')
+                   <div class="form-group">
+                       <label for="progress" class="control-label">Progress</label>
+                       <textarea name="progress" class="form-control" disabled>{{ $report->progress }}</textarea>
+                   </div>
                </div>
            </div>
        </div>

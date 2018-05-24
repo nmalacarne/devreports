@@ -1,6 +1,6 @@
-<div class="col-lg-3">
-    <div class="panel panel-info">
-        <div class="panel-heading">
+<div class="col-lg-3 mb-2">
+    <div class="card">
+        <div class="card-header">
             <div class="row panel-title">
                 <div class="col-sm-6">
                     <span>{{ str_limit($report->user->name, 10) }}</span>
@@ -12,16 +12,16 @@
             </div>
         </div>
 
-        <div class="panel-body">
+        <div class="card-body">
             <p>{{ str_limit($report->progress, 75) }}</p>
         </div>
 
-        <div class="panel-footer text-center">
+        <div class="card-footer">
             <div class="row">
                 <div class="col-sm-4">
                     <a href="{{ route('reports.edit', $report) }}">
                         <button type="button" class="btn btn-default btn-block">
-                            <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                            <span class="fa fa-pencil" aria-hidden="true"></span>
                         </button>
                     </a>
                 </div>
@@ -29,7 +29,7 @@
                 <div class="col-sm-4">
                     <a href="{{ route('reports.show', $report) }}">
                         <button type="button" class="btn btn-default btn-block">
-                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                            <span class="fa fa-eye" aria-hidden="true"></span>
                         </button>
                     </a>
                 </div>
@@ -39,7 +39,7 @@
                         {{ csrf_field() }}
                         <input type="hidden" name="_method" value="DELETE" />
                         <button type="submit" class="btn btn-default btn-block">
-                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+                            <span class="fa fa-trash" aria-hidden="true"></span>
                         </button>
                     </form>
                 </div>

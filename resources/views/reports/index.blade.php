@@ -19,14 +19,12 @@
         </div>
 
 
-        <div class="row">
+        <div class="row mb-3">
             @each('reports._panel', $reports, 'report')
         </div>
 
-        <div class="row">
-            <div class="text-center">
-                {{ $reports->links() }}
-            </div>
+        <div class="row justify-content-center">
+            {{ $reports->links() }}
         </div>
     </div>
 @endsection

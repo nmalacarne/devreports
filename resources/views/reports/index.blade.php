@@ -23,8 +23,10 @@
             @each('reports._card', $reports, 'report', 'reports._empty')
         </div>
 
-        <div class="row justify-content-center">
-            {{ $reports->links() }}
-        </div>
+        @if ($reports->count())
+            <div class="row justify-content-center">
+                {{ $reports->links() }}
+            </div>
+        @endif
     </div>
 @endsection

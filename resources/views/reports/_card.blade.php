@@ -35,13 +35,11 @@
                 </div>
 
                 <div class="col-sm-4">
-                    <form action="{{ route('reports.destroy', $report) }}" method="POST">
-                        {{ csrf_field() }}
-                        <input type="hidden" name="_method" value="DELETE" />
+                    @component('shared._destroy_button', ['route' => 'reports.destroy', 'resource' => $report])
                         <button type="submit" class="btn btn-default btn-block">
                             <span class="fa fa-trash" aria-hidden="true"></span>
                         </button>
-                    </form>
+                    @endcomponent
                 </div>
             </div>
         </div>

@@ -20,7 +20,7 @@
 
 
         <div class="row mb-3">
-            @each('reports._card', $reports, 'report')
+            @each('reports._card', $reports, 'report', 'reports._empty')
         </div>
 
         <div class="row justify-content-center">

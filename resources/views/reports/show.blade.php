@@ -10,8 +10,7 @@
 
                <div class="card-body">
                    <div class="form-group">
-                       <label for="progress" class="control-label">Progress</label>
-                       <textarea name="progress" class="form-control" disabled>{{ $report->progress }}</textarea>
+                       @include('reports._fields', ['disabled' => true])
                    </div>
                </div>
            </div>

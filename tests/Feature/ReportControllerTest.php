@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Report;
 use App\User;
+use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -11,6 +12,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class ReportControllerTest extends TestCase
 {
     use RefreshDatabase;
+    use WithFaker;
 
     private $user;
 
@@ -96,7 +98,9 @@ class ReportControllerTest extends TestCase
     public function shouldStoreNewReport()
     {
         $response = $this->post(route('reports.store'), [
-            'progress' => 'Testing'
+            'progress' => $this->faker->paragraph,
+            'todos' => $this->faker->paragraph,
+            'comments' => $this->faker->paragraph,
         ]);
 
         $response->assertRedirect(route('reports.show', Report::first()));
@@ -117,6 +121,8 @@ class ReportControllerTest extends TestCase
         $this->assertEquals(0, Report::count());
         $response->assertSessionHasErrors([
             'progress',
+            'todos',
+            'comments',
         ]);
     }
 
@@ -134,7 +140,9 @@ class ReportControllerTest extends TestCase
         ]);
 
         $response = $this->put(route('reports.update', $report), [
-            'progress' => 'Testing'
+            'progress' => $this->faker->paragraph,
+            'todos' => $this->faker->paragraph,
+            'comments' => $this->faker->paragraph,
         ]);
 
         $this->assertEquals(1, Report::count());
@@ -165,6 +173,8 @@ class ReportControllerTest extends TestCase
         $this->assertEquals($report->progress, Report::first()->progress);
         $response->assertSessionHasErrors([
             'progress',
+            'todos',
+            'comments',
         ]);
     }
 }

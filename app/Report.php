@@ -13,6 +13,8 @@ class Report extends Model
      */
     protected $fillable = [
         'progress',
+        'todos',
+        'comments',
     ];
 
     /**

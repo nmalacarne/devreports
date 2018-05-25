@@ -45,6 +45,8 @@ class ReportController extends Controller
 
         $request->validate([
             'progress' => 'required',
+            'todos' => 'required',
+            'comments' => 'required',
         ]);
 
         $report = $request->user()->reports()->create($request->all());
@@ -91,7 +93,9 @@ class ReportController extends Controller
         $this->authorize('update', $report);
 
         $request->validate([
-            'progress' => 'filled',
+            'progress' => 'required',
+            'todos' => 'required',
+            'comments' => 'required',
         ]);
 
         $report->fill($request->all())->save();

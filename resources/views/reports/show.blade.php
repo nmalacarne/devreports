@@ -5,7 +5,8 @@
        <div class="col-lg-6">
            <div class="card">
                <div class="card-header">
-                   View Report
+                   <span class="justify-content-start">View Report</span>
+                   <span class="pull-right">{{ $report->created_at->format('m/d/Y') }}</span>
                </div>
 
                <div class="card-body">

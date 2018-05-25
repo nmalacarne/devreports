@@ -12,7 +12,7 @@
                    <form method="POST" action="{{ route('reports.store') }}">
                        {{ csrf_field() }}
 
-                       @include('reports._fields')
+                       @include('reports._fields', ['disabled' => false])
                        @include('reports._buttons')
                    </form>
                </div>

@@ -13,7 +13,7 @@
                        {{ csrf_field() }}
                        {{ method_field('PUT') }}
 
-                       @include('reports._fields')
+                       @include('reports._fields', ['disabled' => false])
                        @include('reports._buttons')
                    </form>
                </div>

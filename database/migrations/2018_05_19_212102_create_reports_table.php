@@ -15,7 +15,9 @@ class CreateReportsTable extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->increments('id');
-            $table->longText('progress');
+            $table->text('progress');
+            $table->text('todos');
+            $table->text('comments');
             $table->unsignedInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
